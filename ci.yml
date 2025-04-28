@@ -1,0 +1,34 @@
+schemaVersion: v0.2
+prepare:
+  steps:
+    - name: Install ollama
+      command: nix-env -iA nixpkgs.ollama
+    - name: Download llms
+      command: nohup ollama serve & sleep 5 && ollama pull llama3.2 && ollama pull
+        deepseek-r1
+    - name: Install uv
+      command: nix-env -iA nixpkgs.uv
+    - name: Create virtual environment and install open-webui
+      command: if [ ! -d ".venv" ]; then uv venv --python 3.11.9 && .
+        .venv/bin/activate && uv init -p 3.11.9; fi && uv add open-webui && uv
+        sync
+test:
+  steps: []
+run:
+  ollama:
+    steps:
+      - name: Run ollama
+        command: ollama serve
+    plan: 22
+    replicas: 1
+    isPublic: false
+  open-webui:
+    steps:
+      - name: Run open-webui
+        command: uv run open-webui serve --port 3000 
+    plan: 22
+    replicas: 1
+    isPublic: true
+    network:
+      path: /
+      stripPath: false
