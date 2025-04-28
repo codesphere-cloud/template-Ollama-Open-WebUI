@@ -10,20 +10,20 @@ This template sets up a Codesphere workspace to run both [Ollama](https://ollama
     * Set the environment variables in your workspace.
 
 2.  **Prepare Stage:**
-    * Run the `prepare` stage of your Codesphere workspace.
+    * Run the `Prepare` stage of your Codesphere workspace.
     *   This stage will download Open-WebUI and Ollama.
     *   And it will download llama3.2 and deepseek-r1 which you can change to llms of your choice. See the list of availbable llms [here](https://ollama.com/search)
 
 3.  **Run Stage:**
-    * Once the `prepare` stage is complete, run the `run` stage. This will start both the Ollama server and the Open WebUI.
+    * Once the `Prepare` stage is complete, run the `Run` stage. This will start both the Ollama server and the Open WebUI.
 
 ## Accessing Open WebUI
 
-After the `run` stage is running for a few seconds, you should be able to access the Open WebUI in your Codesphere workspace through the 'Open deployment' button.
+After the `Run` stage is running for a few seconds, you should be able to access the Open WebUI in your Codesphere workspace through the 'Open deployment' button.
 
 ## Further Information
 
-* **Ollama Documentation:** [https://ollama.ai/docs](https://ollama.ai/docs)
-* **Open WebUI Documentation:** [https://github.com/ollama/ollama/blob/main/docs/README.md](https://github.com/ollama/ollama/blob/main/docs/README.md)
+* **Ollama Documentation:** [https://github.com/ollama/ollama/blob/main/docs/README.md)](https://github.com/ollama/ollama/blob/main/docs/README.md)
+* **Open WebUI Documentation:** [https://docs.openwebui.com/](https://docs.openwebui.com/)
 
 Enjoy running your local LLMs with Ollama and Open WebUI in Codesphere!
