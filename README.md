@@ -23,7 +23,7 @@ After the `Run` stage is running for a few seconds, you should be able to access
 
 ## Further Information
 
-* **Ollama Documentation:** [https://github.com/ollama/ollama/blob/main/docs/README.md)](https://github.com/ollama/ollama/blob/main/docs/README.md)
+* **Ollama Documentation:** [https://github.com/ollama/ollama/blob/main/docs/README.md](https://github.com/ollama/ollama/blob/main/docs/README.md)
 * **Open WebUI Documentation:** [https://docs.openwebui.com/](https://docs.openwebui.com/)
 
 Enjoy running your local LLMs with Ollama and Open WebUI in Codesphere!
