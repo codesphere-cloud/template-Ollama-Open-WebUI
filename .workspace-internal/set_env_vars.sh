@@ -42,4 +42,4 @@ while IFS='=' read -r key value; do
 
 done < "$ENV_FILE"
 
-# echo "Finished setting environment variables."
+echo "Finished setting environment variables."
