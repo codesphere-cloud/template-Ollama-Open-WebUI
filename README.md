@@ -24,7 +24,7 @@ This template sets up a [Codesphere](https://codesphere.com) workspace to run bo
 ## Accessing Open WebUI
 
 After the `Run` stage is running for a few seconds, it will look something like this:
-![image](./.workspace-internal/open-webui.png)  
+![image](./open-webui.png)  
   
 Note: When you run it for the first time, it will take a bit longer.  
 You can access the Open WebUI in your Codesphere workspace through the 'Open deployment' button.
