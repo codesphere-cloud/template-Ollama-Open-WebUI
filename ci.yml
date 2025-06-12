@@ -1,31 +1,33 @@
 schemaVersion: v0.2
 prepare:
   steps:
+    - name: Copy .env.example vars to .env file
+      command: if ! grep -q -F -f <(grep -E '^[A-Z_]+=' .env.example | sed 's/=.*//')
+        .env; then cat .env.example >> .env; fi
     - name: Install ollama
       command: nix-env -iA nixpkgs.ollama
-    - name: Download llms
-      command: nohup ollama serve & sleep 5 && ollama pull llama3.2 && ollama pull
-        deepseek-r1
+    - name: Install process-compose
+      command: nix-env -iA nixpkgs.process-compose
     - name: Install uv
-      command: nix-env -iA nixpkgs.uv
+      command: . .env && export UV_BIN_DIR=$UV_BIN_DIR && nix-env -iA nixpkgs.uv
     - name: Create virtual environment and install open-webui
-      command: if [ ! -d ".venv" ]; then uv venv --python 3.11.9 && .
-        .venv/bin/activate && uv init -p 3.11.9; fi && uv add open-webui && uv
-        sync
+      command: . .env && export UV_PYTHON_INSTALL_DIR=$UV_PYTHON_INSTALL_DIR && uv add
+        open-webui && uv sync
 test:
   steps: []
 run:
   ollama:
     steps:
       - name: Run ollama
-        command: ollama serve
+        command: process-compose -t=False -f process-compose.models.yaml
     plan: 22
     replicas: 1
     isPublic: false
   open-webui:
     steps:
       - name: Run open-webui
-        command: uv run open-webui serve --port 3000 
+        command: . .env && export OLLAMA_BASE_URL=$OLLAMA_BASE_URL && uv run open-webui
+          serve --port 3000 
     plan: 22
     replicas: 1
     isPublic: true

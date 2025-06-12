@@ -1,0 +1,12 @@
+version: "0.5"
+
+processes:
+  ollama_serve:
+    command: ollama serve
+    ready_log_line: "GET"
+  ollama_pull:
+    command: ollama pull phi4-mini
+    depends_on:
+      ollama_serve:
+        condition: process_log_ready
+  
