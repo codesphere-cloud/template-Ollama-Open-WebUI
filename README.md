@@ -4,22 +4,30 @@ This template sets up a [Codesphere](https://codesphere.com) workspace to run bo
 
 ## Getting Started
 
-1.  **Environment Variables:**
-    * Copy the `.env.example` file to `.env`.
-    * **Crucially**, edit the `.env` file and set any necessary environment variables for Ollama and Open WebUI. Refer to the documentation of each project for available options.
-    * Set the environment variables in your workspace.
+1. **Create a new workspace on [Codesphere](codesphere.com/ide) with this URL:**  
+    ```bash
+    https://github.com/codesphere-cloud/template-Ollama-Open-WebUI.git
+    ```
+    1. Use a `Boost` or `Pro` plan to have enough storage for the llms.  
 
-2.  **Prepare Stage:**
-    * Run the `Prepare` stage of your Codesphere workspace.
-    *   This stage will download Open-WebUI and Ollama.
-    *   And it will download llama3.2 and deepseek-r1 which you can change to llms of your choice. See the list of availbable llms [here](https://ollama.com/search)
+2.  **Run the `Prepare` stage**  
+    1. Wait till the `Prepare` stage is complete
+* It will copy the .env.example file to a .env file 
+* It will download Open-WebUI and Ollama.  
 
-3.  **Run Stage:**
-    * Once the `Prepare` stage is complete, run the `Run` stage. This will start both the Ollama server and the Open WebUI.
+4.  **Run the `Run` stage**  
+* It will start both the Ollama server and the Open WebUI.
+* It will download phi4-mini. 
+    * You can change this to llms of your choice in the `process-compose.models.yml` file.
+    * See the list of availbable llms [here](https://ollama.com/search).
 
 ## Accessing Open WebUI
 
-After the `Run` stage is running for a few seconds, you should be able to access the Open WebUI in your Codesphere workspace through the 'Open deployment' button.
+After the `Run` stage is running for a few seconds, it will look something like this:
+![image](./.workspace-internal/open-webui.png)  
+  
+Note: When you run it for the first time, it will take a bit longer.  
+You can access the Open WebUI in your Codesphere workspace through the 'Open deployment' button.
 
 ## Licensing
 
